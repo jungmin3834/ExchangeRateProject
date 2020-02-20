@@ -10,11 +10,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import org.apache.tomcat.util.json.JSONParser;
+import org.apache.tomcat.util.json.ParseException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.FileWriter;
 
 class UpdateManage implements Runnable {
 	public void run() {
@@ -38,25 +44,32 @@ class UpdateManage implements Runnable {
 public class MyTestApplication {
 
 	public static void executePost(String targetURL) throws IOException {
-		URL yahoo;
+		URL url;
 		try {
-			yahoo = new URL(targetURL);
+			url = new URL(targetURL);
 
 			URLConnection yc;
 			try {
-				yc = yahoo.openConnection();
+				yc = url.openConnection();
 
 				BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
-				String inputLine;
-
-				while ((inputLine = in.readLine()) != null)
-					System.out.println(inputLine);
+				String inputLine = "";
+				while (in.ready() == true) {
+					inputLine += in.readLine();
+				}
+				
+				JSONArray ary = new JSONArray(inputLine);
+				JSONObject jObject = ary.getJSONObject(0);
+		
+				System.out.println(jObject.get("name"));
+			
+				//System.out.println(inputLine);
 				in.close();
 
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			} 
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -67,13 +80,14 @@ public class MyTestApplication {
 
 	public static void main(String[] args) {
 
+		System.out.print("Start");
 		try {
 			executePost("https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWAud");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		System.out.print("Finish");
 		//SpringApplication.run(MyTestApplication.class, args);
 		//Thread t = new Thread(new UpdateManage());
 		//t.start();
