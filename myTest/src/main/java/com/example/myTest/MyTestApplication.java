@@ -58,10 +58,16 @@ public class MyTestApplication {
 					inputLine += in.readLine();
 				}
 				
+				
 				JSONArray ary = new JSONArray(inputLine);
 				JSONObject jObject = ary.getJSONObject(0);
-		
-				System.out.println(jObject.get("name"));
+				
+				//System.out.println(inputLine);
+				
+				RateData rateData = new RateData(jObject.get("name").toString(), Float.parseFloat(jObject.get("basePrice").toString()));
+
+				System.out.print(rateData.getMoney());
+				
 			
 				//System.out.println(inputLine);
 				in.close();
