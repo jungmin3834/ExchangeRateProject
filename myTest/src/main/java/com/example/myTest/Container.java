@@ -16,8 +16,8 @@ public class Container {
         CountryRateContrainer = null;
     }
 
-    public void addData(String _Name,RateData _RateData){
-        CountryRateContrainer.put(_Name, _RateData);
+    public void addData(RateData _RateData){
+        CountryRateContrainer.put(_RateData.getName(), _RateData);
     }
 
     public RateData getDataByName(String _Name) {

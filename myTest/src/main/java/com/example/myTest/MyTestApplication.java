@@ -43,6 +43,8 @@ class UpdateManage implements Runnable {
 @SpringBootApplication
 public class MyTestApplication {
 
+	static Container container;
+
 	public static void executePost(String targetURL) throws IOException {
 		URL url;
 		try {
@@ -65,6 +67,8 @@ public class MyTestApplication {
 				//System.out.println(inputLine);
 				
 				RateData rateData = new RateData(jObject.get("name").toString(), Float.parseFloat(jObject.get("basePrice").toString()));
+				container.addData(rateData);
+
 
 				System.out.print(rateData.getMoney());
 				
@@ -84,9 +88,14 @@ public class MyTestApplication {
 
 	}
 
+	public static void init(){
+		container = new Container();
+	}
+
 	public static void main(String[] args) {
 
 		System.out.print("Start");
+		init();
 		try {
 			executePost("https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWAud");
 		} catch (IOException e) {

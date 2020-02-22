@@ -15,5 +15,9 @@ public class RateData
     public float getMoney(){
         return Money;
     }
+
+    public String getName(){
+        return Name;
+    }
     
 };
