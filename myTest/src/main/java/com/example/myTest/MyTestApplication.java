@@ -64,11 +64,11 @@ public class MyTestApplication {
 				JSONArray ary = new JSONArray(inputLine);
 				JSONObject jObject = ary.getJSONObject(0);
 				
-				//System.out.println(inputLine);
+				System.out.println(inputLine);
 				
 				RateData rateData = new RateData(jObject.get("name").toString(), Float.parseFloat(jObject.get("basePrice").toString()));
 				container.addData(rateData);
-
+				
 
 				System.out.print(rateData.getMoney());
 				
@@ -88,12 +88,16 @@ public class MyTestApplication {
 
 	}
 
+
+
 	public static void init(){
 		container = new Container();
 	}
 
 	public static void main(String[] args) {
 
+		ProcessControl test = new ProcessControl();
+		/*
 		System.out.print("Start");
 		init();
 		try {
@@ -102,7 +106,7 @@ public class MyTestApplication {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.print("Finish");
+		System.out.print("Finish");*/
 		//SpringApplication.run(MyTestApplication.class, args);
 		//Thread t = new Thread(new UpdateManage());
 		//t.start();
