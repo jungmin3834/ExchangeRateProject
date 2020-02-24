@@ -45,19 +45,14 @@ public class ProcessControl {
            return;
         }
           
-				
-        System.out.println(inputLine);
 				JSONArray ary = new JSONArray(inputLine);
 				JSONObject jObject = ary.getJSONObject(0);
 			
        
 				
 				RateData rateData = new RateData(jObject.get("name").toString(), Float.parseFloat(jObject.get("basePrice").toString()),rate);
-				container.addData(rateData);
-				//System.out.print(rateData.getName() + "  :   " +rateData.getMoney());
-				
-			
-				//System.out.println(inputLine);
+        container.addData(rateData);
+        
 				in.close();
 
 			} catch (MalformedURLException e) {
@@ -76,7 +71,7 @@ public class ProcessControl {
       Scanner myReader;
       String path = "https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW";
 
-      myReader = new Scanner(new File("C:\\Users\\MSI\\Desktop\\test.txt"), "UTF-8");
+      myReader = new Scanner(new File("C:\\Users\\MSI\\Desktop\\exchangelistjson.txt"), "UTF-8");
 
       String res = String.format("");
       while (myReader.hasNext()) {
