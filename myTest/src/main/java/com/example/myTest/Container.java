@@ -6,9 +6,7 @@ import java.util.Map;
 public class Container {
 
     Map<String,RateData> CountryRateContrainer = new HashMap<String,RateData>();
-
     public Container(){
-
     }
     
     public void DeContainer(){

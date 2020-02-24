@@ -4,12 +4,14 @@ package com.example.myTest;
 public class RateData
 {
     private String Name;
+    private String Rate;
     private float Money;
 
 
-    public RateData(String _name ,float _money){
+    public RateData(String _name ,float _money,String _rate){
         Money = _money;  
         Name = _name;      
+        Rate = _rate;
     }
 
     public float getMoney(){
@@ -20,4 +22,7 @@ public class RateData
         return Name;
     }
     
+    public String getRate(){
+        return Rate;
+    }
 };
