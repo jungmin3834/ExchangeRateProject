@@ -1,8 +1,9 @@
 package com.example.myTest;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
+/*
 class UpdateManage implements Runnable {
 	public void run() {
 		int idx = 0;
@@ -18,12 +19,12 @@ class UpdateManage implements Runnable {
 			System.out.print("Update!\n");
 		}
 	}
-}
+}*/
 
 @SpringBootApplication
 public class MyTestApplication {
 
-	static Container container;
+	public static Container container;
 
 
 	public static void init(){
@@ -32,11 +33,10 @@ public class MyTestApplication {
 
 	public static void main(String[] args) {
 		init();
-		ProcessControl test = new ProcessControl(container);
-		
-		container.printAllContainerData();
-		
-		//SpringApplication.run(MyTestApplication.class, args);
+		ProcessControl process = new ProcessControl();
+		process.init(container);
+		container.printAllContainerData();	
+		SpringApplication.run(MyTestApplication.class, args);
 		//Thread t = new Thread(new UpdateManage());
 		//t.start();
 	}

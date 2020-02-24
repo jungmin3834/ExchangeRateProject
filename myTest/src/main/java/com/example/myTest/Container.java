@@ -26,13 +26,16 @@ public class Container {
             return CountryRateContrainer.get(_Name);
     }
 
-    public void printAllContainerData(){
+    public String printAllContainerData(){
         Iterator<String> mapIter = CountryRateContrainer.keySet().iterator();
- 
+        StringBuffer res = new StringBuffer("");
         while(mapIter.hasNext()){
             String key = mapIter.next();
             RateData value = CountryRateContrainer.get(key);
-            System.out.println(value.getName()+" : " + value.getRate() + "  : "+value.getMoney());
+            res.append("{\"name\":\""+ value.getName()+"\",\"rate\":\""+ value.getRate() + "\",\"money\":\""+ value.getMoney()+"\"},");
         }
+
+        res.delete(res.length()-1,res.length());
+        return "[" + res + "]";
     }
 };

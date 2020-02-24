@@ -15,9 +15,7 @@ import org.json.JSONObject;
 
 public class ProcessControl {
 
-  public ProcessControl(Container container) {
-    init(container);
-    
+  public ProcessControl() {
   }
 
   public void executePost(String targetURL , String rate, Container container){
@@ -63,35 +61,36 @@ public class ProcessControl {
 
 	}
 
-
-  void init(Container container) {
-    try {
+   public String getMoneyRateJson(){
       Scanner myReader;
-      String path = "https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW";
-
-      myReader = new Scanner(new File("C:\\Users\\MSI\\Desktop\\exchangelistjson.txt"), "UTF-8");
+      try {
+        myReader = new Scanner(new File("C:\\Users\\MSI\\Desktop\\exchangelistjson.txt"), "UTF-8");
+    
 
       String res = String.format("");
       while (myReader.hasNext()) {
         String data = myReader.nextLine();
         res += data;
       }
-      res = res.replace("﻿", "");
+      return res = res.replace("﻿", "");
+    } catch (FileNotFoundException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+      return "";
+    }
+  }
+
+  void init(Container container) {
+
+      String path = "https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW";
+  
+  
       //System.out.println(res);
-      JSONArray js = new JSONArray(res);
+      JSONArray js = new JSONArray(getMoneyRateJson());
       for(int i =0;i<js.length();i++){
         JSONObject jObject = js.getJSONObject(i);
         executePost(path + jObject.get("code"), jObject.get("rate").toString(),container);
       }
-      
-
-
-
-      } catch (FileNotFoundException e) {
-           e.printStackTrace();
-      }
-         
-        
     }
 
 

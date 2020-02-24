@@ -1,28 +1,28 @@
-package com.example.myTest;
+    package com.example.myTest;
 
 
-public class RateData
-{
-    private String Name;
-    private String Rate;
-    private float Money;
+    public class RateData
+    {
+        private String Name;
+        private String Rate;
+        private float Money;
 
 
-    public RateData(String _name ,float _money,String _rate){
-        Money = _money;  
-        Name = _name;      
-        Rate = _rate;
-    }
+        public RateData(String _name ,float _money,String _rate){
+            Money = _money;  
+            Name = _name;      
+            Rate = _rate;
+        }
 
-    public float getMoney(){
-        return Money;
-    }
+        public float getMoney(){
+            return Money;
+        }
 
-    public String getName(){
-        return Name;
-    }
-    
-    public String getRate(){
-        return Rate;
-    }
-};
+        public String getName(){
+            return Name;
+        }
+        
+        public String getRate(){
+            return Rate;
+        }
+    };

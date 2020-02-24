@@ -11,10 +11,11 @@ public class HelloController {
 		return "Greetings from Spring Boot!";
 	}
 
+	
 
-	@RequestMapping("/getApi")
-	public String test() {
-		return "test";
+	@RequestMapping("/getMoneyRate")
+	public String getMoneyList() {
+		return MyTestApplication.container.printAllContainerData();
 	}
 
 
