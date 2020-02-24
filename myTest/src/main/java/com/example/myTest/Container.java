@@ -1,11 +1,12 @@
 package com.example.myTest;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class Container {
 
-    Map<String,RateData> CountryRateContrainer = new HashMap<String,RateData>();
+    HashMap<String,RateData> CountryRateContrainer = new HashMap<String,RateData>();
     public Container(){
     }
     
@@ -25,6 +26,13 @@ public class Container {
             return CountryRateContrainer.get(_Name);
     }
 
-
-
+    public void printAllContainerData(){
+        Iterator<String> mapIter = CountryRateContrainer.keySet().iterator();
+ 
+        while(mapIter.hasNext()){
+            String key = mapIter.next();
+            RateData value = CountryRateContrainer.get(key);
+            System.out.println(value.getName()+" : " + value.getRate() + "  : "+value.getMoney());
+        }
+    }
 };

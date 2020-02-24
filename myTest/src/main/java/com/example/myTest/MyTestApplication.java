@@ -34,16 +34,8 @@ public class MyTestApplication {
 		init();
 		ProcessControl test = new ProcessControl(container);
 		
-		/*
-		System.out.print("Start");
-		init();
-		try {
-			executePost("https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRWAud");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.print("Finish");*/
+		container.printAllContainerData();
+		
 		//SpringApplication.run(MyTestApplication.class, args);
 		//Thread t = new Thread(new UpdateManage());
 		//t.start();

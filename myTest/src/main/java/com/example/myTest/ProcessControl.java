@@ -15,14 +15,12 @@ import org.json.JSONObject;
 
 public class ProcessControl {
 
-  Container container;
-  public ProcessControl(Container _container) {
-    container = _container;
-    init();
+  public ProcessControl(Container container) {
+    init(container);
     
   }
 
-  public void executePost(String targetURL , String rate){
+  public void executePost(String targetURL , String rate, Container container){
     URL url;
 		try {
 			url = new URL(targetURL);
@@ -49,7 +47,7 @@ public class ProcessControl {
 				JSONObject jObject = ary.getJSONObject(0);
 			
        
-				
+				//null = TZS 탄자니아 실링.
 				RateData rateData = new RateData(jObject.get("name").toString(), Float.parseFloat(jObject.get("basePrice").toString()),rate);
         container.addData(rateData);
         
@@ -66,7 +64,7 @@ public class ProcessControl {
 	}
 
 
-  void init() {
+  void init(Container container) {
     try {
       Scanner myReader;
       String path = "https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW";
@@ -83,7 +81,7 @@ public class ProcessControl {
       JSONArray js = new JSONArray(res);
       for(int i =0;i<js.length();i++){
         JSONObject jObject = js.getJSONObject(i);
-        executePost(path + jObject.get("code"), jObject.get("rate").toString());
+        executePost(path + jObject.get("code"), jObject.get("rate").toString(),container);
       }
       
 
