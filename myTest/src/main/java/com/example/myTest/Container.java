@@ -32,7 +32,7 @@ public class Container {
         while(mapIter.hasNext()){
             String key = mapIter.next();
             RateData value = CountryRateContrainer.get(key);
-            res.append("{\"name\":\""+ value.getName()+"\",\"rate\":\""+ value.getRate() + "\",\"money\":\""+ value.getMoney()+"\"},");
+            res.append("{\"name\":\""+value.getRate()+"\",\"rate\":\""+ value.getRate() + "\",\"money\":\""+ value.getMoney()+"\"},");
         }
 
         res.delete(res.length()-1,res.length());

@@ -45,7 +45,8 @@ public class ProcessControl {
 				JSONObject jObject = ary.getJSONObject(0);
 			
        
-				//null = TZS 탄자니아 실링.
+        //null = TZS 탄자니아 실링.
+        System.out.println(jObject.get("basePrice").toString());
 				RateData rateData = new RateData(jObject.get("name").toString(), Float.parseFloat(jObject.get("basePrice").toString()),rate);
         container.addData(rateData);
         
