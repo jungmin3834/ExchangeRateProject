@@ -9,6 +9,10 @@ public class Container {
     HashMap<String,RateData> CountryRateContrainer = new HashMap<String,RateData>();
     public Container(){
     }
+
+    public void clearContainer(){
+        CountryRateContrainer.clear();
+    }
     
     public void DeContainer(){
         CountryRateContrainer.clear();
