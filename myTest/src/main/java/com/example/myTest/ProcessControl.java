@@ -84,8 +84,6 @@ public class ProcessControl {
   void init(Container container) {
 
       String path = "https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.KRW";
-  
-  
       //System.out.println(res);
       JSONArray js = new JSONArray(getMoneyRateJson());
       for(int i =0;i<js.length();i++){
@@ -93,7 +91,4 @@ public class ProcessControl {
         executePost(path + jObject.get("code"), jObject.get("rate").toString(),container);
       }
     }
-
-
-
 };
